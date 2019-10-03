@@ -38,7 +38,7 @@ u"\U000024C2-\U0001F251"
     return emoji_pattern.sub(r'', string)
 
 
-def data_preproc(data: list, remove_punct=True, remove_smiles=True, tokenize_punct=False):
+def data_preproc(data: list, remove_punct=True, remove_smiles=True, tokenize_punct=False, len_threshold=10):
     assert remove_punct != tokenize_punct, "Use one of this parameters"
 
     full_data = []
@@ -47,6 +47,7 @@ def data_preproc(data: list, remove_punct=True, remove_smiles=True, tokenize_pun
             text = sent['text']
 
             text = text.replace("\n", " ").replace("  ", " ")
+            text = text.replace("_", "")
 
             if remove_smiles:
                 text = remove_emoji(text)
@@ -58,8 +59,12 @@ def data_preproc(data: list, remove_punct=True, remove_smiles=True, tokenize_pun
 
             if remove_punct:
                 text_tokens = remove_punctuation(text_tokens)
+                
+            if "admin" in text_tokens:
+                text_tokens = text_tokens[:text_tokens.index("admin")]
 
-            full_data.append(text_tokens)
+            if len(text_tokens) > len_threshold:
+                full_data.append(text_tokens)
         
     print("Samples: {} | Removed samples: {}".format(len(full_data), len(data) - len(full_data)))
     return full_data
