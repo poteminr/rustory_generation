@@ -36,11 +36,14 @@ u"\U0001F1E0-\U0001F1FF"
 u"\U00002702-\U000027B0"
 u"\U000024C2-\U0001F251"
 "]+", flags=re.UNICODE)
-    return emoji_pattern.sub(r'', string)
+    RE_EMOJI = re.compile('[\U00010000-\U0010ffff]', flags=re.UNICODE)
+    string = emoji_pattern.sub(r'', string)
+    string = RE_EMOJI.sub(r'', string)
+    return string
 
 
 def data_preproc(data: list, remove_punct=True, remove_smiles=True, tokenize_punct=False, is_lower=True, len_threshold=10):
-    assert remove_punct != tokenize_punct, "Use one of this parameters"
+    assert not (remove_punct == True and tokenize_punct == True), "Use one of this parameters"
 
     full_data = []
     for sent in tqdm_notebook(data):
