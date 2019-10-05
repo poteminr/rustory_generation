@@ -25,3 +25,11 @@ Total samples: 59173
 - Admin`s comments removed
 - Tokenize or remove punctuation
 - Stories lenght > 10 words
+
+## Hardware
+- GTX 1080
+- Tesla P100-16GB
+
+
+## Results 
+I just started, the results will be later.
