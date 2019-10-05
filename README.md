@@ -10,7 +10,7 @@ Total samples: 59173
 |:----|:----|:----|
 | N-gram based | LM_ngram.ipynb | GRU | 
 | Word based | LM_word-based.ipynb | GRU |
-| Character based  | None | None |
+| Character based  | LM_char.ipynb | LSTM |
 
 
 ## Pre-trained embeddings
