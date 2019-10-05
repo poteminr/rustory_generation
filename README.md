@@ -24,4 +24,4 @@ Total samples: 59173
 - Ads removed
 - Admin`s comments removed
 - Tokenize or remove punctuation
-- Stories lenght > 10
+- Stories lenght > 10 words
