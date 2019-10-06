@@ -6,11 +6,11 @@ Total samples: 59173
 >Если подумаете, что вы одинокий и вам станет грустно, то вспомните мужика, который в три часа ночи обнимал мусорный бак, при этом напевая песенку Агутина ты забудешь обо мне, на сиреневой луне. Жалко его стало
 
 ## Used methods for text generation 
-| Method | Code | Model |
-|:----|:----|:----|
-| N-gram based | LM_ngram.ipynb | GRU | 
-| Word based | LM_word-based.ipynb | GRU |
-| Character based  | LM_char.ipynb | LSTM |
+| Method | Code | Model | Choice Policy
+|:----|:----|:----|:----|
+| N-gram based | LM_ngram.ipynb | GRU | Max probability
+| Word based | LM_word-based.ipynb | GRU |  Max probability
+| Character based  | LM_char.ipynb | LSTM | Random choice of k most likely
 
 
 ## Pre-trained embeddings
