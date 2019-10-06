@@ -8,10 +8,9 @@ Total samples: 59173
 ## Used methods for text generation 
 | Method | Code | Model | Choice Policy
 |:----|:----|:----|:----|
+| Character based  | LM_char.ipynb | LSTM | Random choice of k most likely
 | N-gram based | LM_ngram.ipynb | GRU | Max probability
 | Word based | LM_word-based.ipynb | GRU |  Max probability
-| Character based  | LM_char.ipynb | LSTM | Random choice of k most likely
-
 
 ## Pre-trained embeddings
 | Name | Comment |
