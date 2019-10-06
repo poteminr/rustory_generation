@@ -2,7 +2,7 @@
 ## Corpus example 
 Data from vk-group ["Pozor"](https://vk.com/styd.pozor) 
 
-Total samples: 59173
+Total stories: 59173
 >Если подумаете, что вы одинокий и вам станет грустно, то вспомните мужика, который в три часа ночи обнимал мусорный бак, при этом напевая песенку Агутина ты забудешь обо мне, на сиреневой луне. Жалко его стало
 
 ## Used methods for text generation 
