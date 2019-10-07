@@ -5,5 +5,6 @@ rubert_torch
 story_data.pkl
 story_data_with_punc.pkl
 story_data_origin.pkl
+story_data_punct_del_em.pkl
 corpus_parse.py
 data_review.ipynb
