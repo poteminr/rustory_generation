@@ -11,7 +11,7 @@ Total stories: 59173
 | Character based  | LM_char.ipynb | LSTM | Random choice of k most likely
 | N-gram based | LM_ngram.ipynb | GRU | Max probability
 | Word based | LM_word-based.ipynb | LSTM |  Random choice of k most likely
-| LeakGAN | Working on it | GAN |  Working on it
+
 
 
 ## Pre-trained embeddings
