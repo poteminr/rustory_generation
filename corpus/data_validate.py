@@ -43,7 +43,23 @@ u"\U000024C2-\U0001F251"
 
 
 def data_preproc(data: list, remove_punct=True, remove_smiles=True, tokenize_punct=False, is_lower=True, len_threshold=10):
+    """Data preprocessing function
+    
+    Arguments:
+        data {list} -- [list of dict with post meta-info from corpus_parce.py]
+    
+    Keyword Arguments:
+        remove_punct {bool} -- [Remove all punctuation from text] (default: {True})
+        remove_smiles {bool} -- [Remove all emoji] (default: {True})
+        tokenize_punct {bool} -- [Separate punct from the word] (default: {False})
+        is_lower {bool} -- [Transform all word to lower case] (default: {True})
+        len_threshold {int} -- [Max words/char in seq] (default: {10})
+    
+    Returns:
+        [np.array] -- [array of array of seq tokens]
+    """
     assert not (remove_punct == True and tokenize_punct == True), "Use one of this parameters"
+    
 
     full_data = []
     for sent in tqdm_notebook(data):
