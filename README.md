@@ -8,17 +8,17 @@ Total stories: 59173
 ## Used methods for text generation 
 | Method | Code | Model | Choice Policy
 |:----|:----|:----|:----|
-| Transformer  | transformer.py | Transformer | Working on it
-| Character based  | LM_char.ipynb | LSTM | Random choice of k most likely
-| N-gram based | LM_ngram.ipynb | GRU | Max probability
-| Word based | LM_word-based.ipynb | LSTM |  Random choice of k most likely
+| Transformer  | Working on it | Transformer | Working on it
+| Character based  | LMs/LM_char.ipynb | LSTM | Random choice of k most likely
+| N-gram based | LMs/LM_ngram.ipynb | GRU | Max probability
+| Word based | LMs/LM_word-based.ipynb | LSTM |  Random choice of k most likely
 
 
 
 ## Pre-trained embeddings
-| Name | Comment |
+| Name | Comment | 
 |:----|:----|
-| RuBert | Very hard to fine-tune | 
+| RuBert | Very hard to fine-tune, not used.| 
 
 ## Data preprocessing
 
