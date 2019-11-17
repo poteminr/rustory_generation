@@ -8,7 +8,7 @@ Total stories: 59173
 ## Used methods for text generation 
 | Method | Code | Model | Choice Policy
 |:----|:----|:----|:----|
-| Transformer  | Working on it | Transformer | Working on it
+| Transformer  | Transformer based/Transformer.ipynb | Transformer | Max probability
 | Character based  | LMs/LM_char.ipynb | LSTM | Random choice of k most likely
 | N-gram based | LMs/LM_ngram.ipynb | GRU | Max probability
 | Word based | LMs/LM_word-based.ipynb | LSTM |  Random choice of k most likely
@@ -27,9 +27,11 @@ Total stories: 59173
 - Admin`s comments removed
 - Tokenize or remove punctuation
 - Stories lenght > 10 words
+- Stories lenghts < 200 chars (for Transformer)
+- BPE tokenizer (for Transformer)
 
 ## Hardware
-- 2 x GTX 1080
+- GTX 1080x2
 - Tesla P100-16GB
 
 
