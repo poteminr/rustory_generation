@@ -15,10 +15,11 @@ Total stories: 59173
 
 
 
-## Pre-trained embeddings
+## Pre-trained embeddings and tokenizers
 | Name | Comment | 
 |:----|:----|
-| RuBert | Very hard to fine-tune, not used.| 
+| RuBert | Very hard to fine-tune, not used.|
+| YouTokenToMe | None|
 
 ## Data preprocessing
 
