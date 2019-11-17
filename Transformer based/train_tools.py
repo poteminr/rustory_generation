@@ -17,14 +17,14 @@ def callback(train_loss, val_loss, train_time, epoch_value, epoch_n):
     print(msg)
 
 
-def lm_cross_entropy(pred, target):
+def cross_entropy(pred, target):
 
     pred_flat = pred.view(-1, pred.shape[-1])  
     target_flat = target.view(-1)  
 
     return F.cross_entropy(pred_flat, target_flat, ignore_index=0)
 
-def train_loop(model, device, optimizer, train_loader, test_loader, criterion=lm_cross_entropy, epoch_value=10):
+def train_loop(model, device, optimizer, train_loader, test_loader, criterion=cross_entropy, epoch_value=10):
     start = time.time()
     for epoch_ind in range(epoch_value):
         model.train()
