@@ -36,47 +36,54 @@ def train_loop(model, device, optimizer, train_loader, test_loader, criterion=cr
     start = time.time()
 
     for epoch_ind in range(epoch_value):
-        model.train()
-        train_loss = 0
-        
-        for ind, (input_s, target_s) in enumerate(train_loader):
-            input_s = input_s.to(device)
-            target_s = target_s.to(device)
-            
-            pred = model(input_s)
-            loss = criterion(pred, target_s)
-            model.zero_grad()
-            loss.backward()
-            optimizer.step()
-            
-            train_loss += loss
-            
-            del input_s, target_s
-            gc.collect()
-        
-        train_loss /= (ind + 1)
-        
-        
-        test_loss = 0
-        model.eval()
-        
-        with torch.no_grad():
-            for ind, (input_s, target_s) in enumerate(test_loader):
+        try:
+            model.train()
+            train_loss = 0
+
+            for ind, (input_s, target_s) in enumerate(train_loader):
                 input_s = input_s.to(device)
                 target_s = target_s.to(device)
-                
+
                 pred = model(input_s)
                 loss = criterion(pred, target_s)
-                
-                test_loss += loss
-                
+                model.zero_grad()
+                loss.backward()
+                optimizer.step()
+
+                train_loss += loss
+
                 del input_s, target_s
                 gc.collect()
+                torch.cuda.empty_cache() 
+
+            train_loss /= (ind + 1)
+
+
+            test_loss = 0
+            model.eval()
+
+            with torch.no_grad():
+                for ind, (input_s, target_s) in enumerate(test_loader):
+                    input_s = input_s.to(device)
+                    target_s = target_s.to(device)
+
+                    pred = model(input_s)
+                    loss = criterion(pred, target_s)
+
+                    test_loss += loss
+
+                    del input_s, target_s
+                    gc.collect()
+                    torch.cuda.empty_cache() 
+
+                test_loss /= (ind + 1)
+                lr_policy.step(test_loss)
+
+            train_time = time_since(start)
+            callback(train_loss, test_loss, train_time, epoch_value, epoch_ind+1)
             
-            test_loss /= (ind + 1)
-            lr_policy.step(test_loss)
-    
-        train_time = time_since(start)
-        callback(train_loss, test_loss, train_time, epoch_value, epoch_ind+1)
+        except KeyboardInterrupt:
+            print(f"Early stopping | Epoch: {epoch_ind + 1}")
+            break
         
     return model
