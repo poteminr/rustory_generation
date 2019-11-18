@@ -2,6 +2,7 @@ import time
 import math
 import torch
 import torch.nn.functional as F
+import gc
 
 
 def time_since(since):
@@ -17,7 +18,7 @@ def callback(train_loss, val_loss, train_time, epoch_value, epoch_n):
     print(msg)
 
 
-def lm_cross_entropy(pred, target):
+def cross_entropy(pred, target):
 
     pred_flat = pred.view(-1, pred.shape[-1])  
     target_flat = target.view(-1)  
@@ -30,7 +31,7 @@ def lr_scheduler(optimizer):
                                                       factor=0.5,
                                                       verbose=True)
 
-def train_loop(model, device, optimizer, train_loader, test_loader, criterion=lm_cross_entropy, epoch_value=10):
+def train_loop(model, device, optimizer, train_loader, test_loader, criterion=cross_entropy, epoch_value=10):
     lr_policy = lr_scheduler(optimizer)
     start = time.time()
 
@@ -51,6 +52,7 @@ def train_loop(model, device, optimizer, train_loader, test_loader, criterion=lm
             train_loss += loss
             
             del input_s, target_s
+            gc.collect()
         
         train_loss /= (ind + 1)
         
@@ -69,6 +71,7 @@ def train_loop(model, device, optimizer, train_loader, test_loader, criterion=lm
                 test_loss += loss
                 
                 del input_s, target_s
+                gc.collect()
             
             test_loss /= (ind + 1)
             lr_policy.step(test_loss)
