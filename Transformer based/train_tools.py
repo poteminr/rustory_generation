@@ -3,6 +3,7 @@ import math
 import torch
 import torch.nn.functional as F
 import gc
+from livelossplot import PlotLosses
 
 
 def time_since(since):
@@ -31,12 +32,14 @@ def lr_scheduler(optimizer):
                                                       factor=0.5,
                                                       verbose=True)
 
-def train_loop(model, device, optimizer, train_loader, test_loader, criterion=cross_entropy, epoch_value=10):
+def train_loop(model, device, optimizer, train_loader, test_loader, criterion=cross_entropy, epoch_value=10, plot_loss=False):
     lr_policy = lr_scheduler(optimizer)
     start = time.time()
+    liveloss = PlotLosses()
 
     for epoch_ind in range(epoch_value):
         try:
+            logs = {}
             model.train()
             train_loss = 0
 
@@ -80,7 +83,15 @@ def train_loop(model, device, optimizer, train_loader, test_loader, criterion=cr
                 lr_policy.step(test_loss)
 
             train_time = time_since(start)
-            callback(train_loss, test_loss, train_time, epoch_value, epoch_ind+1)
+            
+            if plot_loss:
+                 logs['val_' + 'loss'] = train_loss
+                logs['loss'] = test_loss
+                liveloss.update(logs)
+                liveloss.draw()
+                
+            else:
+                callback(train_loss, test_loss, train_time, epoch_value, epoch_ind+1)
             
         except KeyboardInterrupt:
             print(f"Early stopping | Epoch: {epoch_ind + 1}")
