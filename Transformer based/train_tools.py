@@ -85,7 +85,7 @@ def train_loop(model, device, optimizer, train_loader, test_loader, criterion=cr
             train_time = time_since(start)
             
             if plot_loss:
-                 logs['val_' + 'loss'] = train_loss
+                logs['val_' + 'loss'] = train_loss
                 logs['loss'] = test_loss
                 liveloss.update(logs)
                 liveloss.draw()
