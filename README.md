@@ -19,7 +19,7 @@ Total stories: 59173
 | Name | Comment | 
 |:----|:----|
 | RuBert | Very hard to fine-tune, not used.|
-| YouTokenToMe | None|
+| YouTokenToMe |I think it's better than char-level tokenizer|
 
 ## Data preprocessing
 
