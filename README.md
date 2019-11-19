@@ -27,8 +27,8 @@ Total stories: 59173
 - Ads removed
 - Admin`s comments removed
 - Tokenize or remove punctuation
-- Stories lenght > 10 words
-- Stories lenghts < 200 chars (for Transformer)
+- Stories > 10 words
+- Stories < 200 chars (for Transformer)
 - BPE tokenizer (for Transformer)
 
 ## Hardware
