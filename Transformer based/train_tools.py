@@ -26,13 +26,14 @@ def cross_entropy(pred, target):
 
     return F.cross_entropy(pred_flat, target_flat, ignore_index=0)
 
-def lr_scheduler(optimizer):
+def reduce_lr_scheduler(optimizer):
     return torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer,
                                                       patience=20,
                                                       factor=0.5,
                                                       verbose=True)
 
-def train_loop(model, device, optimizer, train_loader, test_loader, criterion=cross_entropy, epoch_value=10, plot_loss=False):
+def train_loop(model, device, optimizer, train_loader, test_loader, lr_scheduler=reduce_lr_scheduler,
+               criterion=cross_entropy, epoch_value=10, plot_loss=False):
     lr_policy = lr_scheduler(optimizer)
     start = time.time()
     liveloss = PlotLosses()
