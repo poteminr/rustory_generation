@@ -8,7 +8,7 @@ Total stories: 59173
 ## Used methods for text generation 
 | Method | Code | Model | Choice Policy
 |:----|:----|:----|:----|
-| Transformer  | Transformer based/Transformer.ipynb | Transformer | Max probability
+| Transformer  | Transformer based/Transformer.ipynb | Transformer | Max probability or BeamSearch
 | Character based  | LMs/LM_char.ipynb | LSTM | Random choice of k most likely
 | N-gram based | LMs/LM_ngram.ipynb | GRU | Max probability
 | Word based | LMs/LM_word-based.ipynb | LSTM |  Random choice of k most likely
